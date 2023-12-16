@@ -1,0 +1,173 @@
+<!-- <style>
+    .bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); 
+        z-index: 999; 
+    }
+</style> -->
+<div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+        <a class="navbar-brand" style="color: #3BACDC;">Droguería Santy</a>
+        <div class="navbar-text" >
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/inicio" style="color: #000000;">Inicio</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/inventario" style="color: #000000;">Inventario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/notificaciones" style="color: #3BACDC;">Notificaciones</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <div class="container mt-3 justify-content-center align-items-center border-bottom">
+        <div class="row ">
+        <div class="col">
+            <h3>Productos</h3>
+        </div>
+        <div class="col">
+            <button class="btn btn-accent" (click)="agregarProducto()">Agregar Producto</button>
+            <button class="btn btn-accent">Reporte de Productos</button>
+            <button class="btn btn-accent">A - Z</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+        <!-- Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card d-flex flex-column">
+                    <img src="./assets/logos/wom.jpg" class="card-img-top" alt="Producto 1">
+                    <div class="card-body">
+                        <h5 class="card-title">CENTRUM</h5>
+                        <p class="card-text">Precio: 50.000 COP.</p>
+                        <p class="card-text">Zona: Zona 1</p>
+                        <button class="btn btn-success" (click)="editarProducto()">Editar</button>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card d-flex flex-column">
+                <img src="./assets/logos/Botox.jpg" class="card-img-top" alt="Producto 2">
+                    <div class="card-body">
+                        <h5 class="card-title">BOTOX</h5>
+                        <p class="card-text">Precio: 75.000 COP.</p>
+                        <p class="card-text">Zona: Zona 2</p>
+                        <button class="btn btn-success" (click)="editarProducto()">Editar</button>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card d-flex flex-column">
+                <img src="./assets/logos/engystol.jpg" class="card-img-top" alt="Producto 3">
+                    <div class="card-body">
+                        <h5 class="card-title">ENGYSTOL</h5>
+                        <p class="card-text">Precio: 100.000 COP</p>
+                        <p class="card-text">Zona: Zona 3</p>
+                        <button class="btn btn-success" (click)="editarProducto()">Editar</button>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="mostrarFormulario" class="position-fixed top-50 start-50 translate-middle">
+    <div class="card" style="height: auto; width: 80rem;  background-color: rgb(223, 224, 228)">
+        <div class="card-body">
+          <h5 class="card-title">Agregar Producto</h5>
+          <form>
+            <div class="row mb-3">
+              <div class="col">
+                <label for="nombreProducto" class="form-label">Nombre del Producto:</label>
+                <input type="text" class="form-control" id="nombreProducto" formControlName="nombreProducto">
+              </div>
+              <div class="col">
+                <label for="idProducto" class="form-label">Precio del Producto:</label>
+                <input type="text" class="form-control" id="idProducto" formControlName="idProducto">
+              </div>
+              <div class="col">
+                <label for="caducidadProducto" class="form-label">Caducidad del Producto:</label>
+                <input type="text" class="form-control" id="caducidadProducto" formControlName="caducidadProducto" bsDatepicker>
+              </div>
+            </div>
+      
+            <div class="row mb-3">
+              <div class="col">
+                <label for="ubicacionProducto" class="form-label">Ubicación del Producto:</label>
+                <input type="text" class="form-control" id="ubicacionProducto" formControlName="ubicacionProducto">
+              </div>
+              <div class="col">
+                <label for="cantidadProducto" class="form-label">Cantidad del Producto:</label>
+                <input type="text" class="form-control" id="cantidadProducto" formControlName="cantidadProducto">
+              </div>
+              <div class="col">
+                <label for="fechaIngreso" class="form-label">Fecha de Ingreso:</label>
+                <input type="text" class="form-control" id="fechaIngreso" formControlName="fechaIngreso">
+              </div>
+            </div>
+      
+            <button type="button" class="btn btn-success" (click)="guardarProducto()">Guardar</button>
+          </form>
+        </div>
+      </div>
+      
+  </div>
+  <div *ngIf="mostrarFormularioEditar" class="position-fixed top-50 start-50 translate-middle">
+    <div class="card" style="height: auto; width: 80rem;  background-color: rgb(223, 224, 228)">
+        <div class="card-body">
+          <h5 class="card-title">Editar Producto</h5>
+          <form>
+            <div class="row mb-3">
+              <div class="col">
+                <label for="nombreProducto" class="form-label">Nombre del Producto:</label>
+                <input type="text" class="form-control" id="nombreProducto" formControlName="nombreProducto">
+              </div>
+              <div class="col">
+                <label for="idProducto" class="form-label">Precio del Producto:</label>
+                <input type="text" class="form-control" id="idProducto" formControlName="idProducto">
+              </div>
+              <div class="col">
+                <label for="caducidadProducto" class="form-label">Caducidad del Producto:</label>
+                <input type="text" class="form-control" id="caducidadProducto" formControlName="caducidadProducto" bsDatepicker>
+              </div>
+            </div>
+      
+            <div class="row mb-3">
+              <div class="col">
+                <label for="ubicacionProducto" class="form-label">Ubicación del Producto:</label>
+                <input type="text" class="form-control" id="ubicacionProducto" formControlName="ubicacionProducto">
+              </div>
+              <div class="col">
+                <label for="cantidadProducto" class="form-label">Cantidad del Producto:</label>
+                <input type="text" class="form-control" id="cantidadProducto" formControlName="cantidadProducto">
+              </div>
+              <div class="col">
+                <label for="fechaIngreso" class="form-label">Fecha de Ingreso:</label>
+                <input type="text" class="form-control" id="fechaIngreso" formControlName="fechaIngreso">
+              </div>
+            </div>
+      
+            <button type="button" class="btn btn-success" (click)="guardarProducto()">Actualizar</button>
+          </form>
+        </div>
+      </div>
+      
+  </div>
