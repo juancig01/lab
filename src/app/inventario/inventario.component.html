@@ -52,8 +52,9 @@
                         <h5 class="card-title">CENTRUM</h5>
                         <p class="card-text">Precio: 50.000 COP.</p>
                         <p class="card-text">Zona: Zona 1</p>
+                        <p class="card-text">Unidades: {{unidades}}</p>
                         <button class="btn btn-success" (click)="editarProducto()">Editar</button>
-                        <button class="btn btn-danger">Eliminar</button>
+                        <button class="btn btn-danger" (click)="venderProducto()">Vender</button>
                     </div>
                 </div>
             </div>
@@ -66,8 +67,9 @@
                         <h5 class="card-title">BOTOX</h5>
                         <p class="card-text">Precio: 75.000 COP.</p>
                         <p class="card-text">Zona: Zona 2</p>
+                        <p class="card-text">Unidades: {{unidades2}}</p>
                         <button class="btn btn-success" (click)="editarProducto()">Editar</button>
-                        <button class="btn btn-danger">Eliminar</button>
+                        <button class="btn btn-danger" (click)="venderProducto2()">Vender</button>
                     </div>
                 </div>
             </div>
@@ -80,8 +82,9 @@
                         <h5 class="card-title">ENGYSTOL</h5>
                         <p class="card-text">Precio: 100.000 COP</p>
                         <p class="card-text">Zona: Zona 3</p>
+                        <p class="card-text">Unidades: {{unidades3}}</p>
                         <button class="btn btn-success" (click)="editarProducto()">Editar</button>
-                        <button class="btn btn-danger">Eliminar</button>
+                        <button class="btn btn-danger" (click)="venderProducto3()">Vender</button>
                     </div>
                 </div>
             </div>

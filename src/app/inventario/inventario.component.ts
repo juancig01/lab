@@ -11,6 +11,9 @@ export class InventarioComponent {
   mostrarFormulario: boolean = false;
   mostrarFormularioEditar: boolean = false;
   formulario: FormGroup;
+  unidades: number = 56;
+  unidades2: number = 56;
+  unidades3: number = 56;
 
   constructor(private fb: FormBuilder) {
     // Inicializa el formulario con controles y validadores
@@ -29,6 +32,29 @@ export class InventarioComponent {
     this.mostrarFormularioEditar = !this.mostrarFormularioEditar;
   }
 
+  venderProducto() {
+    if (this.unidades > 0) {
+      this.unidades--;
+    } else {
+      alert('No hay unidades CENTRUM disponibles.');
+    }
+  }
+
+  venderProducto2() {
+    if (this.unidades2 > 0) {
+      this.unidades2--;
+    } else {
+      alert('No hay unidades BOTOX disponibles.');
+    }
+  }
+
+  venderProducto3() {
+    if (this.unidades3 > 0) {
+      this.unidades3--;
+    } else {
+      alert('No hay unidades ENGYSTOL disponibles.');
+    }
+  }
   // Método para manejar la acción de guardar el producto
   guardarProducto() {
     // if (this.formulario.valid) {
