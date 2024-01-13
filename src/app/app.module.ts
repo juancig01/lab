@@ -7,6 +7,7 @@ import { InventarioComponent } from './inventario/inventario.component';
 import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { AppRoutingModule } from './app-rounting.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
