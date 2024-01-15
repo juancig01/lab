@@ -15,9 +15,10 @@ export class InventarioComponent {
   //productoDisponible: boolean = true;
   //productoDisponible2: boolean = true;
   //productoDisponible3: boolean = true;
-  unidades: number = 56;
-  unidades2: number = 56;
-  unidades3: number = 56;
+  unidades: number = 5;
+  unidades2: number = 5;
+  unidades3: number = 5;
+  mensajeAlerta: string = "";
 
   constructor(private fb: FormBuilder, private modalService: NgbModal) {
     // Inicializa el formulario con controles y validadores
@@ -40,17 +41,16 @@ export class InventarioComponent {
     if (this.unidades > 0) {
       this.unidades--;
     } else {
-      //this.productoDisponible == false;
-      //alert('No hay unidades CENTRUM disponibles.');
+      this.mensajeAlerta = 'No hay unidades CENTRUM disponibles.';
       this.mostrarAlerta();
     }
   }
+
   venderProducto2() {
     if (this.unidades2 > 0) {
       this.unidades2--;
     } else {
-      //this.productoDisponible2 == false;
-      //alert('No hay unidades BOTOX disponibles.');
+      this.mensajeAlerta = 'No hay unidades BOTOX disponibles.';
       this.mostrarAlerta();
     }
   }
@@ -59,14 +59,12 @@ export class InventarioComponent {
     if (this.unidades3 > 0) {
       this.unidades3--;
     } else {
-      //this.productoDisponible3 == false;
-      //alert('No hay unidades ENGYSTOL disponibles.');
+      this.mensajeAlerta = 'No hay unidades ENGYSTOL disponibles.';
       this.mostrarAlerta();
     }
   }
-
   mostrarAlerta() {
-    this.modalService.open('alerta-unidades-agotadas', { centered: true });
+    this.modalService.open('Alerta unidades agotadas', { centered: true });
   }
 
   // Método para manejar la acción de guardar el producto
